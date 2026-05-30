@@ -71,10 +71,17 @@ body{font-family:'Barlow',sans-serif;color:var(--txt)}
 /* Era dividers */
 .era-hdr{display:flex;align-items:center;gap:8px;margin:20px 0 6px}
 .tl-gap{display:flex;align-items:center;gap:10px;margin:9px 14px;opacity:.85}
+.tl-clickable{cursor:pointer;transition:opacity .15s}
+.tl-clickable:hover{opacity:1}
 .tl-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,164,76,.3),transparent)}
 .tl-txt{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:10px;color:var(--bronze);white-space:nowrap;font-weight:600}
 .tl-txt.tl-same{color:var(--dim);font-weight:400;font-style:italic;letter-spacing:.1em}
-.tl-lore{font-family:'Barlow',sans-serif;font-size:11.5px;line-height:1.55;color:var(--dim);text-align:center;max-width:90%;margin:0 auto 4px;padding:0 14px}
+.tl-info{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--bronze);width:18px;height:18px;border:1px solid rgba(201,164,76,.4);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;line-height:1;flex-shrink:0;transition:all .2s}
+.tl-clickable:hover .tl-info{background:rgba(201,164,76,.15);border-color:var(--bronze)}
+.tl-open .tl-info{background:var(--bronze);color:var(--void);border-color:var(--bronze)}
+.tl-lore{max-height:0;overflow:hidden;transition:max-height .35s ease;margin:0 14px}
+.tl-lore-open{max-height:400px}
+.tl-lore-inner{font-family:'Barlow',sans-serif;font-size:12.5px;line-height:1.65;color:var(--txt);opacity:.78;text-align:left;padding:10px 14px 12px;background:rgba(201,164,76,.04);border:1px solid rgba(201,164,76,.12);border-radius:8px;margin-bottom:4px}
 .era-hdr-line{flex:1;height:1px;background:currentColor;opacity:.12}
 .era-hdr-lbl{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:9px;opacity:.55}
 /* List items */
@@ -357,25 +364,25 @@ const D=[
 // "What happens in between" lore, keyed by the entry number the gap leads INTO.
 // Covers animated series, novels and comics that fill each chronological gap.
 const GAPLORE={
-  2:"The century of the High Republic plays out across novels and comics: the Jedi at their height, the Nihil raiders, and the Great Disaster, long before the Sith resurface.",
-  3:"Anakin grows up as Obi-Wan's Padawan. The films skip a decade covered by tie-in comics as tensions build toward the Separatist crisis.",
-  4:"The Clone Wars rage across the galaxy. The acclaimed animated series fills these three years: Ahsoka Tano's arc, Maul's return, and the Republic's slow corruption from within.",
-  5:"Order 66 and the Great Jedi Purge. The Bad Batch animated series follows clone deserters as the Empire takes hold and hunts the last Jedi.",
-  6:"The early Empire tightens its grip. Comics and novels follow Vader hunting Jedi survivors, while a young Han Solo scrapes by before his smuggling days.",
-  7:"Obi-Wan's confrontation with Vader fades into legend. The Empire industrializes its war machine as scattered cells of resistance begin to stir.",
-  8:"Cassian's early rebel missions. The growing network of spies and cells starts coordinating, the seeds of the Alliance covered in tie-in fiction.",
-  9:"The rebellion escalates toward open war. Star Wars Rebels climaxes around here, and the Alliance forms officially just before the Death Star plans are stolen.",
-  10:"Rogue One leads directly into A New Hope. The stolen plans reach Leia's ship within hours, with no time skip at all.",
-  11:"The Rebels flee after the Death Star's destruction. Marvel comics cover Luke, Han and Leia's adventures and the Empire's hunt during these three years.",
-  12:"Luke begins Jedi training in earnest. The gap between Empire and Jedi is short but covered by comics detailing the plan to rescue Han from Jabba.",
-  13:"The Empire collapses after Endor. The Aftermath novels and the Battle of Jakku end the war; the New Republic rises and a lone bounty hunter drifts the Outer Rim.",
-  19:"The New Republic stabilizes while Imperial remnants scheme in the Unknown Regions. Din and Grogu's bond deepens across this loosely-defined period.",
-  20:"The 30-year leap covers the most history: Luke's failed Jedi temple, Ben Solo's fall to Kylo Ren, the New Republic's complacency, and the First Order rising in secret from Imperial ashes. Detailed in the Aftermath trilogy and Bloodline.",
-  22:"The Resistance regroups after Starkiller Base. The gap is short, bridged by novels and comics leading into the final confrontation with the returned Emperor."
+  2:"The High Republic era spans roughly two centuries before the Skywalker saga, the subject of a major multimedia publishing initiative of novels and comics. The Jedi Order is at the height of its power, serving as guardians of peace across an expanding Republic. This period covers the rise of the Nihil, a savage marauder group, and the Great Hyperspace Disaster that shattered confidence in galactic travel. The Sith are believed long extinct, operating only in deepest secrecy, which is exactly the shadow The Acolyte explores before the films pick up a century later.",
+  3:"After discovering Anakin on Tatooine, the films jump a full decade. Anakin grows from a slave boy into a gifted but headstrong Padawan under Obi-Wan, while Padme transitions from Queen to Senator of Naboo. Tie-in comics explore Obi-Wan and Anakin's early missions together and the tensions in their mentorship. Across the galaxy, Count Dooku's Separatist movement quietly gathers thousands of star systems preparing to secede, setting the stage for war.",
+  4:"The Clone Wars consume the galaxy for three years, depicted across the beloved animated series (2008-2020) and countless novels. Anakin takes his own Padawan, Ahsoka Tano, whose arc became one of the franchise's most cherished. Darth Maul returns from presumed death to build a criminal empire. Battles rage on hundreds of worlds while Palpatine, secretly orchestrating both sides, slowly accumulates emergency powers and erodes the Republic from within until it is ripe to become an Empire.",
+  5:"Order 66 executes the Great Jedi Purge, the clone troopers turning on their Jedi generals in a single coordinated massacre. The Bad Batch animated series follows a squad of defective clones navigating the transition from Republic to Empire, while comics depict scattered Jedi survivors going into hiding. The Empire industrializes rapidly, constructing its war machine and beginning the secret Death Star project. Vader hunts the few Jedi who escaped, hardening into the galaxy's most feared enforcer.",
+  6:"A decade into Imperial rule, the galaxy has largely accepted the new order. The Vader comic series depicts his consolidation of power and his hunt for surviving Jedi through the Inquisitorius, a corps of dark-side hunters. Meanwhile a young Han Solo washes out of the Imperial Academy and falls into the smuggling underworld. Obi-Wan watches over the infant Luke from afar on Tatooine, a broken man waiting in exile, which is where his own series finds him.",
+  7:"Following his secret duel with Vader, Obi-Wan returns to hiding. The Empire's grip tightens through fear and overwhelming force, but the cruelty also breeds the first sparks of organized resistance. Mon Mothma, Bail Organa and other senators begin covertly coordinating, work depicted in novels like Rebel Rising. Scattered cells operate in isolation, not yet a unified Alliance, the murky early-resistance world that Andor portrays with unusual realism.",
+  8:"Cassian's first year as a committed rebel agent. The various resistance cells slowly knit into a coordinated network under figures like Luthen Rael, with Mon Mothma funneling resources while maintaining her Senate cover. This period, partly dramatized in Andor's own time-skips, sees the rebellion mature from scattered acts of defiance into a genuine military and intelligence operation capable of challenging the Empire directly.",
+  9:"The rebellion escalates into open war. Star Wars Rebels, the animated series, reaches its climax in this window, following the Ghost crew and connecting directly to characters who appear in Rogue One and beyond. The disparate cells formally unite as the Alliance to Restore the Republic. Intelligence about a planet-destroying superweapon begins to surface, prompting the desperate mission to steal its plans that opens Rogue One.",
+  10:"There is no time skip at all. Rogue One ends mere hours before A New Hope begins, the stolen Death Star plans passed to Princess Leia's ship moments before the opening shot of the 1977 film. The transition is essentially seamless, with Leia's blockade runner fleeing the battle of Scarif directly into Vader's pursuit.",
+  11:"The Rebels scatter after the Death Star's destruction, hunted relentlessly by a humiliated Empire. The Marvel comic line covers these three years in detail: Luke's first faltering steps toward understanding the Force, Han and Leia's growing bond, and missions that keep the fledgling Alliance alive. The Empire rebuilds and begins constructing a second, larger Death Star while Vader becomes obsessed with finding the pilot who destroyed the first.",
+  12:"A relatively short gap. The Alliance regroups while Luke trains privately and constructs his own lightsaber, signaling his growth toward becoming a true Jedi. Comics detail the elaborate planning behind the rescue of Han Solo from Jabba the Hutt, the heist that opens Return of the Jedi. The Empire, meanwhile, lays a trap around the second Death Star.",
+  13:"The Empire collapses after the Emperor and Vader die at Endor. The Aftermath novel trilogy chronicles the messy disintegration of Imperial authority, culminating in the decisive Battle of Jakku that ends the war. The New Republic rises to take the galaxy's reins but struggles with demilitarization and complacency. In the lawless Outer Rim, far from the new government's reach, bounty hunters thrive, the world The Mandalorian inhabits five years on.",
+  19:"The New Republic governs but Imperial remnants and warlords scheme in the Unknown Regions, slowly coalescing into what will become the First Order. This loosely defined period across the various Disney+ shows sees Din Djarin and Grogu's bond deepen, Mandalorian culture begin to reunify, and old threats like Thrawn resurface, all while the New Republic underestimates the gathering danger.",
+  20:"The largest gap in the saga, roughly thirty years. Luke attempts to rebuild the Jedi Order but his temple is destroyed when his nephew Ben Solo falls to the dark side and becomes Kylo Ren, a tragedy detailed across novels. The complacent New Republic is secretly infiltrated and undermined, depicted in Bloodline. From the Imperial ashes in the Unknown Regions, the First Order rises as a fanatical military power, while a guilt-ridden Luke exiles himself, the setup The Force Awakens inherits.",
+  22:"A short gap following the destruction of Starkiller Base. The Resistance, reduced to a handful of survivors, scrambles to regroup and find new allies. Novels and comics bridge the brief period before the shocking return of Emperor Palpatine forces a final confrontation, the climactic events of The Rise of Skywalker."
 };
 
 const app=document.getElementById('app');
-let W={},EW={},O={},T={},F='all';
+let W={},EW={},O={},T={},F='all',GO={};
 
 function stars(){
   const sf=document.createElement('div');sf.className='stars';
@@ -580,8 +587,13 @@ function render(){
       const label=(gap!==null&&gap>0)
         ? `<span class="tl-txt">${gap} year${gap===1?'':'s'} later</span>`
         : `<span class="tl-txt tl-same">around the same time</span>`;
-      li+=`<div class="tl-gap"><span class="tl-line"></span>${label}<span class="tl-line"></span></div>`;
-      if(lore)li+=`<div class="tl-lore">${lore}</div>`;
+      if(lore){
+        const open=GO[d.n];
+        li+=`<div class="tl-gap tl-clickable${open?' tl-open':''}" data-gap="${d.n}"><span class="tl-line"></span>${label}<span class="tl-info">${open?'&minus;':'+'}</span><span class="tl-line"></span></div>`;
+        li+=`<div class="tl-lore${open?' tl-lore-open':''}"><div class="tl-lore-inner">${lore}</div></div>`;
+      } else {
+        li+=`<div class="tl-gap"><span class="tl-line"></span>${label}<span class="tl-line"></span></div>`;
+      }
     }
     prevSwy=d.swy;
 
@@ -767,6 +779,7 @@ function render(){
   raf();
   app.querySelectorAll('[data-c]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();togTitle(+el.dataset.c);}));
   app.querySelectorAll('[data-o]').forEach(el=>el.addEventListener('click',()=>togO(+el.dataset.o)));
+  app.querySelectorAll('[data-gap]').forEach(el=>el.addEventListener('click',()=>{const n=+el.dataset.gap;GO[n]=!GO[n];render();}));
   app.querySelectorAll('[data-ts]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();swTab(+el.dataset.ts,el.dataset.t);}));
   app.querySelectorAll('[data-ep]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();togEp(+el.dataset.ep,+el.dataset.ei);}));
   app.querySelectorAll('[data-ma]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();markAllEp(+el.dataset.ma,el.dataset.val==='1');}));
