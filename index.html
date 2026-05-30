@@ -31,8 +31,8 @@ body{font-family:'Barlow',sans-serif;color:var(--txt)}
 /* Masthead */
 .masthead{text-align:center;padding:36px 0 20px}
 .sith-pyramid{display:flex;justify-content:center;margin-bottom:14px}
-.sith-pyramid img{width:96px;height:96px;border-radius:20px;border:1px solid rgba(201,164,76,.25);filter:drop-shadow(0 0 16px rgba(224,36,28,.4));animation:pyrglow 4s ease-in-out infinite}
-@keyframes pyrglow{0%,100%{filter:drop-shadow(0 0 12px rgba(224,36,28,.3))}50%{filter:drop-shadow(0 0 22px rgba(255,59,48,.55))}}
+.sith-pyramid img{width:104px;height:104px;border-radius:14px;filter:drop-shadow(0 0 20px rgba(224,36,28,.4));animation:pyrglow 4s ease-in-out infinite}
+@keyframes pyrglow{0%,100%{filter:drop-shadow(0 0 14px rgba(224,36,28,.3))}50%{filter:drop-shadow(0 0 26px rgba(255,59,48,.55))}}
 .masthead::after{content:'';display:block;height:1px;margin-top:24px;background:linear-gradient(90deg,transparent,rgba(201,164,76,.35),transparent)}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.45em;text-transform:uppercase;color:var(--bronze-dim);margin-bottom:12px}
 .logo{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(34px,11vw,64px);color:var(--sith);letter-spacing:.08em;text-shadow:0 0 40px rgba(224,36,28,.45),0 0 8px rgba(255,59,48,.6)}
@@ -657,7 +657,7 @@ function render(){
   <div class="wrap">
     <div class="masthead">
       <div class="sith-pyramid">
-        <img src="icon-512.png" alt="Sith Holocron" width="96" height="96">
+        <img src="icon-512.png" alt="Sith Holocron" width="104" height="104">
       </div>
       <div class="eyebrow">Star Wars &middot; Chronological Saga Order</div>
       <div class="logo">HOLOCRON</div>
